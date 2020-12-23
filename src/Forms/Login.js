@@ -21,7 +21,7 @@ function Login() {
   const history = useHistory();
 
   const schema = yup.object().shape({
-    username: yup.string().username().required("username is required"),
+    username: yup.string().required("username is required"),
     password: yup
       .string()
       .required("Password is required")
@@ -30,7 +30,7 @@ function Login() {
 
   useEffect(() => {
     schema.isValid(form).then((valid) => setDisabled(!valid));
-  }, [form, schema]);
+  }, [form]);
 
   const change = (e) => {
     const { value, name } = e.target;
@@ -71,7 +71,7 @@ function Login() {
       <div className="signup">
         <Form onSubmit={submit}>
           <FormGroup>
-            <Label for="username">username</Label>
+            <Label for="username">Username: </Label>
             <Input
               className="form-control"
               onChange={change}
@@ -84,7 +84,7 @@ function Login() {
           <div style={{ color: "red" }}>{errors.username}</div>
           <br></br>
           <FormGroup>
-            <Label for="password">Password</Label>
+            <Label for="password">Password: </Label>
             <Input
               className="form-control"
               onChange={change}
@@ -99,8 +99,11 @@ function Login() {
           <Button className="form-control" disabled={disabled}>
             Submit
           </Button>
-          <br></br>
-          <Link to="/Signup">New User?</Link>
+          <br />
+          <br />
+          <Button>
+            <Link to="/Register">New User?</Link>
+          </Button>
         </Form>
         <br></br>
       </div>
